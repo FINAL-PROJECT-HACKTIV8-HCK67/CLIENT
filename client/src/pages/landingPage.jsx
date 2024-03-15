@@ -27,7 +27,7 @@ export default function LandingPage() {
               index === currentIndex ? "opacity-100" : "opacity-0"
             }`}
           >
-            <Link href={"/login"}>
+            <Link to={"/login"}>
               <img
                 src={image}
                 alt={`Slide ${index + 1}`}
