@@ -3,7 +3,7 @@ import LandingPage from "./pages/landingPage";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import SideBar from "./components/sidebar";
-
+import Courses from "./pages/course";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/courses",
-    element: <SideBar/>
+    element: <Courses/>
   }
 
 ])
