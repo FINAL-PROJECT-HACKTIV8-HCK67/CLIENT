@@ -55,7 +55,9 @@ export default function SideBar() {
                 />
               </svg>
             </div>
-            <Link to={"/courses"}> Courses </Link>
+            <Link to={"/courses"}> Courses </Link> 
+
+            
           </div>
           <div
             role="button"
