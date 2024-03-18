@@ -4,9 +4,9 @@ export default function Courses() {
   return (
     <>
       <Card />
-      <div>
-        <h1>Course</h1>
-      </div>
+      <Card />
+      <Card />
+      <Card />
     </>
   );
 }
