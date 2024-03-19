@@ -1,72 +1,33 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Card() {
+  const navigate = useNavigate();
   return (
     <>
-      {/* component */}
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
-          <div className="relative m-0 w-2/5 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
+      <div className="flex flex-wrap justify-center">
+        <div className=" bg-transparent flex-auto justify-center items-center h-full ml-10 mt-4 ">
+          <div className="w- p-6 bg-green-100 rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all transform duration-500">
             <img
-              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              alt="image"
-              className="h-full w-full object-cover"
+              className="w-64 object-cover rounded-t-md"
+              src="https://images.unsplash.com/photo-1509223197845-458d87318791"
+              alt=""
             />
-          </div>
-          <div className="p-6">
-            <h4 className="mb-2 block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-              COURSE.NAME
-            </h4>
-            <p className="mb-8 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
-              COURSE.DESCRIPTION
-            </p>
-            <Link className="inline-block" to="courses/:id">
-              <button
-                className="flex select-none items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-green-400-600 transition-all hover:bg-green-500/10 active:bg-green-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                type="button"
-              >
-                Learn More
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  aria-hidden="true"
-                  className="h-4 w-4"
+            <div className="mt-4">
+              <h1 className="text-2xl font-bold text-gray-700">COURSE.NAME</h1>
+              <p className="text-sm mt-2 text-gray-700">COURSE.DESCRIPTION</p>
+
+              <div className="mt-4 mb-2 flex justify-between pl-4 pr-2">
+                <button className="block text-xl font-semibold text-gray-700 cursor-auto">
+                  PRICE.COIN
+                </button>
+                <button
+                  className="text-lg block font-semibold py-2 px-6 text-gray hover:text-green-20 bg-green-50 rounded-lg shadow hover:shadow-md transition duration-300"
+                  onClick={() => navigate("/courses/:id")}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                  />
-                </svg>
-              </button>
-            </Link>
-            <Link className="inline-block" to="courses/:id">
-              <button
-                className="flex select-none items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-green-400-600 transition-all hover:bg-green-500/10 active:bg-green-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                type="button"
-              >
-                Quiz
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  aria-hidden="true"
-                  className="h-4 w-4"
-                >
-                  
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                  />
-                </svg>
-              </button>
-            </Link>
+                  Start
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

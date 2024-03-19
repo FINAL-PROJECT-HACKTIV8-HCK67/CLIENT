@@ -2,11 +2,12 @@ import Card from "../components/card";
 
 export default function Courses() {
   return (
-    <>
+    <div className="flex flex-wrap">
       <Card />
-      <div>
-        <h1>Course</h1>
-      </div>
-    </>
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+    </div>
   );
 }

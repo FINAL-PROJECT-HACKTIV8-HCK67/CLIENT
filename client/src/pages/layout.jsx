@@ -4,8 +4,10 @@ import SideBar from "../components/sidebar";
 function Layout() {
   return (
     <>
-      <SideBar />
-      <Outlet />
+      <div className="h-screen flex flex-grow">
+        <SideBar />
+        <Outlet />
+      </div>
     </>
   );
 }
