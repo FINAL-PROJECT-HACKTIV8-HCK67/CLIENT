@@ -6,6 +6,7 @@ import Courses from "./pages/course";
 import Layout from "./pages/layout";
 import CourseId from "./pages/courseId";
 import Quiz from "./pages/quiz";
+import Achievement from "./pages/achievement";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
         path: "/quiz/:id",
         element: <Quiz />,
       },
+      {
+        path: "/achievements",
+        element: <Achievement />,
+      }
     ],
   },
 ]);

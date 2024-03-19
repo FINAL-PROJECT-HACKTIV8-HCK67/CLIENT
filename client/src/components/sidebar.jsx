@@ -9,8 +9,6 @@ export default function SideBar() {
           <h5 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-gray-900">
             Pintar Lab
           </h5>
-
-          
         </div>
         <nav className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
           <div
@@ -79,7 +77,7 @@ export default function SideBar() {
                 />
               </svg>
             </div>
-            <Link to={"/achievement"}> Achievement </Link>
+            <Link to={"/achievements"}> Achievement </Link>
           </div>
 
           <div
