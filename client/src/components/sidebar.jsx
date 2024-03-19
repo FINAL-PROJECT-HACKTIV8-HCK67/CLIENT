@@ -4,7 +4,7 @@ export default function SideBar() {
   const navigate = useNavigate();
   return (
     <>
-      <div className="relative flex flex-col bg-clip-border rounded-xl bg-green-100 text-gray-700 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-green-900/5">
+      <div className="relative flex flex-col bg-clip-border rounded-xl bg-green-100 text-gray-700 h-[calc(100vh - 2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-green-900/5">
         <div className="mb-2 p-4">
           <h5 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-gray-900">
             Pintar Lab
@@ -31,7 +31,6 @@ export default function SideBar() {
                 />
               </svg>
             </div>
-
             <Link to={"/users"}> Profile </Link>
           </div>
           <div
@@ -55,9 +54,7 @@ export default function SideBar() {
                 />
               </svg>
             </div>
-            <Link to={"/courses"}> Courses </Link> 
-
-            
+            <Link to={"/courses"}> Courses </Link>
           </div>
           <div
             role="button"

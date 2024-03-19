@@ -5,7 +5,7 @@ export default function Card() {
   return (
     <>
       <div className="flex flex-wrap justify-center">
-        <div className=" bg-transparent flex-auto justify-center items-center h-full ml-5 mt-4 ">
+        <div className=" bg-transparent flex-auto justify-center items-center h-full ml-10 mt-4 ">
           <div className="w- p-6 bg-green-100 rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all transform duration-500">
             <img
               className="w-64 object-cover rounded-t-md"
@@ -22,7 +22,7 @@ export default function Card() {
                 </button>
                 <button
                   className="text-lg block font-semibold py-2 px-6 text-gray hover:text-green-20 bg-green-50 rounded-lg shadow hover:shadow-md transition duration-300"
-                  onClick={() => navigate("/course/:id")}
+                  onClick={() => navigate("/courses/:id")}
                 >
                   Start
                 </button>
