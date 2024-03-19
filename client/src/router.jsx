@@ -7,6 +7,7 @@ import Layout from "./pages/layout";
 import CourseId from "./pages/courseId";
 import Quiz from "./pages/quiz";
 import Achievement from "./pages/achievement";
+import Shop from "./pages/shop";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -38,7 +39,15 @@ export const router = createBrowserRouter([
       {
         path: "/achievements",
         element: <Achievement />,
-      }
+      },
+      // {
+      //   path: "/users/:id",
+      //   element: <Profile />,
+      // },
+      {
+        path: "/shop",
+        element: <Shop />,
+      },
     ],
   },
   {
