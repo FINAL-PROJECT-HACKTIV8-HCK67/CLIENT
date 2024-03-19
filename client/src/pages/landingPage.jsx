@@ -33,7 +33,7 @@ export default function LandingPage() {
                 src={image}
                 alt={`Slide ${index + 1}`}
                 className="w-full h-full object-cover"
-                object-Fit="contain"
+                object-fit="contain"
               />
             </Link>
           </div>
@@ -117,7 +117,7 @@ export default function LandingPage() {
                   className="lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100"
                   src="https://kitamenulis.id/wp-content/uploads/2021/09/Cover-Depan-30-scaled.jpg"
                   alt="blog"
-                  objectFit="contain"
+                  object-fit="contain"
                 />
                 <div className="p-6">
                   <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
@@ -148,7 +148,7 @@ export default function LandingPage() {
                   className="lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100"
                   src="https://th.bing.com/th/id/R.d869c3253905036774b4965a39853e95?rik=1orU6m08LlnqPA&riu=http%3a%2f%2f4.bp.blogspot.com%2f-m4JvYm72EoY%2fVA9Mdn9es8I%2fAAAAAAAAABg%2fa7pa9uUbQ6c%2fs1600%2fbiology.gif&ehk=UJNRT6WgEqhR1x8GIhXTlD7oKt%2bX6wdyAECkv77I9H4%3d&risl=&pid=ImgRaw&r=0"
                   alt="blog"
-                  objectFit="contain"
+                  object-fit="contain"
                 />
                 <div className="p-6">
                   <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
@@ -175,7 +175,7 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-        <Info/>
+        <Info />
       </section>
     </>
   );
