@@ -1,15 +1,22 @@
-@keyframes book-open {
+@keyframes float {
   0% {
-    transform: rotateY(0deg);
+    transform: translateY(0);
   }
   50% {
-    transform: rotateY(90deg);
+    transform: translateY(-10px);
   }
   100% {
-    transform: rotateY(180deg);
+    transform: translateY(0);
   }
 }
 
-.animate-book-open {
-  animation: book-open 2s ease-in-out infinite;
+.animate-float {
+  animation: float 2s ease-in-out infinite;
 }
+
+/* color guide
+  <div className="bg-teal-300 text-teal-300 border-teal-300"> #80BCBD </div>
+  <div className="bg-green-300 text-green-300 border-green-300"> #AAD9BB </div>
+  <div className="bg-lime-200 text-lime-200 border-lime-200"> #D5F0C1 </div>
+  <div className="bg-amber-100 text-amber-100 border-amber-100"> #F9F7C9 </div>
+*/

@@ -3,6 +3,7 @@ import LandingPage from "./pages/landingPage";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Courses from "./pages/course";
+import Profile from "./pages/profile";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -19,5 +20,9 @@ export const router = createBrowserRouter([
   {
     path: "/courses",
     element: <Courses />,
+  },
+  {
+    path: "/profile",
+    element: <Profile/>,
   },
 ]);

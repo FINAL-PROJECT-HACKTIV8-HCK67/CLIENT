@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import image1 from "../assets/1.jpg";
 import image2 from "../assets/3.jpg";
 import image3 from "../assets/training.jpg";
+import Info from "../components/footer";
 export default function LandingPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = [image1, image2, image3];
@@ -174,6 +175,7 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
+        <Info/>
       </section>
     </>
   );

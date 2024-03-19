@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
+import Books from "../components/books";
 
 export default function Register() {
   return (
     <>
       {/* component */}
-      <div className="w-full min-h-screen bg-gray-50 flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
+      <div className="w-full min-h-screen bg-yellow-50 flex sm:flex-row sm:justify-center items-center pt-6 sm:pt-0">
+        <Books />
         <div className="w-full sm:max-w-md p-5 mx-auto">
           <h2 className="mb-12 text-center text-5xl font-extrabold">
             Pintar Lab
@@ -55,6 +57,7 @@ export default function Register() {
             </div>
           </form>
         </div>
+        <Books />
       </div>
     </>
   );
