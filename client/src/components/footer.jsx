@@ -1,7 +1,7 @@
 import { FaTwitter, FaInstagram, FaFacebook } from 'react-icons/fa';
 export default function Info() {
     return (
-        <footer className="bg-gray-900 text-white p-8 w-full">
+        <footer className="text-white p-8 w-full" style={{backgroundColor : "#80BCBD"}}>
             <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center">
                 <div className="mb-4 lg:mb-0">
                     <h3 className="text-xl font-bold mb-2">Follow Us</h3>

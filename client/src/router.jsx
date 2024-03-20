@@ -7,8 +7,8 @@ import Layout from "./pages/layout";
 import CourseId from "./pages/courseId";
 import Quiz from "./pages/quiz";
 import Achievement from "./pages/achievement";
+import Shop from "./pages/shop";
 import Profile from "./pages/profile";
-import LeaderBoard from "./pages/leaderboard";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -42,16 +42,12 @@ export const router = createBrowserRouter([
         element: <Achievement />,
       },
       {
-        path: "/profile",
-        element: <Profile/>,
+        path: "/users/:id",
+        element: <Profile />,
       },
       {
-        path: "/leaderboard",
-        element: <LeaderBoard/>,
-      },
-      {
-        path: "/quiz",
-        element: <Quiz/>,
+        path: "/shop",
+        element: <Shop />,
       },
     ],
   },

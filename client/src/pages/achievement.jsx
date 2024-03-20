@@ -32,7 +32,7 @@ export default function Achievement() {
               src={achievement.logo}
               alt={achievement.title}
               className="w-20 h-20 mr-5"
-              objectFit="contain"
+              object-fit="contain"
             />
             <div>
               <h2 className="text-lg font-semibold mb-2">
