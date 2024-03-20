@@ -1,71 +1,106 @@
-import { useState } from "react";
-export default function Quiz() {
-    const [checkedItems, setCheckedItems] = useState({
-        option1: false,
-        option2: false,
-        option3: false,
-        option4: false,
-    });
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
-    const handleCheckboxChange = (event) => {
-        const { name, checked } = event.target;
-        setCheckedItems({ ...checkedItems, [name]: checked });
-    };
-    return (
-        <div className="bg-yellow-50 flex justify-center items-center min-h-screen">
-            <div className="bg-white p-6 rounded-lg shadow-lg w-full sm:w-96">
-                <h1 className="text-xl font-bold mb-4">"Lorem ipsum dolor sit amet, consectetur adipiscing elit"</h1>
-                <form>
-                    <div className="mb-4">
-                        <label className="flex items-center">
-                            <input
-                                type="checkbox"
-                                className="form-checkbox h-5 w-5 text-teal-500"
-                                name="option1"
-                                checked={checkedItems.option1}
-                                onChange={handleCheckboxChange}
-                            />
-                            <span className="ml-2">Pilihan ganda 1</span>
-                        </label>
-                    </div>
-                    <div className="mb-4">
-                        <label className="flex items-center">
-                            <input
-                                type="checkbox"
-                                className="form-checkbox h-5 w-5 text-teal-500"
-                                name="option2"
-                                checked={checkedItems.option2}
-                                onChange={handleCheckboxChange}
-                            />
-                            <span className="ml-2">Pilihan ganda 2</span>
-                        </label>
-                    </div>
-                    <div className="mb-4">
-                        <label className="flex items-center">
-                            <input
-                                type="checkbox"
-                                className="form-checkbox h-5 w-5 text-teal-500"
-                                name="option3"
-                                checked={checkedItems.option3}
-                                onChange={handleCheckboxChange}
-                            />
-                            <span className="ml-2">Pilihan ganda 3</span>
-                        </label>
-                    </div>
-                    <div className="mb-4">
-                        <label className="flex items-center">
-                            <input
-                                type="checkbox"
-                                className="form-checkbox h-5 w-5 text-teal-500"
-                                name="option4"
-                                checked={checkedItems.option4}
-                                onChange={handleCheckboxChange}
-                            />
-                            <span className="ml-2">Pilihan ganda 4</span>
-                        </label>
-                    </div>
+export default function Quiz() {
+    const navigate = useNavigate()
+    const params = useParams()
+    const charIndex = ["A", "B", "C", "D"]
+
+    const [data, setData] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(null)
+    const [form, setForm] = useState({
+        1 : "",
+        2 : "",
+        3 : "",
+        4 : "",
+        5 : "",
+        6 : "",
+        7 : "",
+        8 : "",
+        9 : "",
+        10 : ""
+    })
+
+    useEffect(() => {
+        async function fetchData(){
+            try {
+                setLoading(true)
+                const [courseTitle, sectionTitle] = params.id.split("&&")
+                const requestBody = {courseTitle, title : sectionTitle}
+                const {data : response} = await axios.post("http://localhost:3000/course/get-quiz", requestBody, {
+                    headers : {
+                        "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`
+                    }
+                })
+                const result = response.response.sections.quiz
+                console.log(result);
+                setData(result)
+            } catch (error) {
+                console.log(error);
+                setError("Something's wrong")
+            } finally {
+                setLoading(false)
+            }
+        }
+        fetchData()
+    }, [])
+
+    async function handleQuiz(e){
+        e.preventDefault()
+        try {
+            const [courseTitle, sectionTitle] = params.id.split("&&")
+            const requestBody = {
+                answers : form,
+                courseTitle,
+                title : sectionTitle
+            }
+            const response = await axios.post('http://localhost:3000/course/submit-quiz', requestBody, {
+                headers : {
+                    "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`
+                }
+            })
+            console.log(response, "SUBMIT QUIZ <<<<<<>>>>>>");
+            Swal.fire({
+                title: "Good job!",
+                text: response.data.message,
+                icon: "success"
+            });
+            navigate(`/courses/${courseTitle}`)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    if(loading){
+        return (<div>Loading ...</div>)
+    }
+
+    if(error){
+        return (<div>Error : {error}</div>)
+    }
+
+    return(
+        <div className="overflow-y-scroll p-8 w-4/5 bg-gray-100">
+            <div className="bg-white rounded-lg p-8 shadow-lg">
+                <h1 className="mb-5 text-xl text-black font-bold">Quiz</h1>
+                <form onSubmit={handleQuiz}>
+                    {data.map((question, index) => (
+                        <div key={index}>
+                                <h1 className="my-5 text-gray-500">{question.number}. {question.questions}</h1>
+                                {question.options.map((option, index) => (
+                                    <div className="flex items-center mb-4" key={index}>
+                                        <input onChange={(e) => {let answer = {...form}; answer[question.number] = e.target.value; setForm(answer)}} id={`${question.number}-${option[charIndex[index]]}`} type="radio" value={charIndex[index]} name={`${question.number}}`} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"/>
+                                        <label htmlFor={`${question.number}-${option[charIndex[index]]}`}  className="ms-2 text-sm font-medium text-gray-500">{option[charIndex[index]]}</label>
+                                    </div>
+                                ))}
+                        </div>
+                    ))}
+                    <button type="submit" className="bg-emerald-300 text-white p-2 rounded-lg w-full my-16 hover:bg-emerald-400">Submit</button>
                 </form>
             </div>
         </div>
-    );
+    )
 }

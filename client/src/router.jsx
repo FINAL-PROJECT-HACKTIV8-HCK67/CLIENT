@@ -9,6 +9,8 @@ import Quiz from "./pages/quiz";
 import Achievement from "./pages/achievement";
 import Shop from "./pages/shop";
 import Profile from "./pages/profile";
+import MyCourses from "./pages/myCourse";
+import LeaderBoard from "./pages/leaderboard";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +32,10 @@ export const router = createBrowserRouter([
         element: <Courses />,
       },
       {
+        path: "/my-courses",
+        element: <MyCourses />,
+      },
+      {
         path: "/courses/:id",
         element: <CourseId />,
       },
@@ -42,13 +48,17 @@ export const router = createBrowserRouter([
         element: <Achievement />,
       },
       {
-        path: "/users/:id",
+        path: "/users",
         element: <Profile />,
       },
       {
         path: "/shop",
         element: <Shop />,
       },
+      {
+        path: "/leaderboard",
+        element: <LeaderBoard />
+      }
     ],
   },
 ]);

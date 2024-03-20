@@ -1,12 +1,9 @@
 import axios from "axios";
 import Card from "../components/card";
 import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export default function Courses() {
-
-    const navigate = useNavigate()
+export default function MyCourses() {
 
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
@@ -16,12 +13,12 @@ export default function Courses() {
         async function fetchData(){
             try {
                 setLoading(true)
-                const response = await axios("http://localhost:3000/course", {
+                const response = await axios("http://localhost:3000/course/my-course", {
                     headers : {
                         "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`
                     }
                 })
-                setData(response.data.courseData)
+                setData(response.data.myCourse)
             } catch (error) {
                 console.log(error);
                 setError("Something's wrong")
@@ -31,30 +28,6 @@ export default function Courses() {
         }
         fetchData()
     }, [])
-
-    async function handleUnlockCourse(id){
-        try {
-            const response = await axios.post("http://localhost:3000/course/unlock-course", 
-                {courseId : id},
-                {headers : {
-                    "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`
-                }}
-            )
-            Swal.fire({
-                title: "Good Job!",
-                text: "Course Unlocked!",
-                icon: "success"
-            });
-            navigate("/my-courses")
-        } catch (error) {
-            console.log(error);
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: error.response.data.message
-            });
-        }
-    }
 
     if(loading){
         return (<div>Loading ...</div>)
@@ -76,22 +49,17 @@ export default function Courses() {
                             alt=""
                             />
                             <div className="mt-4">
-                                <div className="flex">
-                                    <h1 className=" w-1/2 text-2xl font-bold text-gray-700">{item.name}</h1>
-                                    <p className="w-1/2  block text-xl font-semibold text-gray-700 cursor-auto" style={{textAlign : "right"}}>
-                                    {item.cost} 🪙
-                                    </p>
-                                </div>
+                                <h1 className="text-2xl font-bold text-gray-700">{item.name}</h1>
                                 {/* <p className="text-sm mt-2 text-gray-700">COURSE.DESCRIPTION</p> */}
                     
                                 <div className="mt-4 mb-2 flex justify-between pl-4 pr-2">
-                                    
-                                    <button
-                                    className="w-full text-lg block font-semibold py-2 px-6 text-gray hover:text-green-20 bg-green-50 rounded-lg shadow hover:shadow-md transition duration-300"
-                                    onClick={() => handleUnlockCourse(item._id)}
+                                    <Link
+                                    to={`/courses/${item.name}`}
+                                    className="text-lg w-full font-semibold py-2 text-gray-500 hover:text-green-20 bg-green-50 rounded-lg shadow hover:shadow-md transition duration-300"
+                                    style={{textAlign : "center"}}
                                     >
-                                    Unlock
-                                    </button>
+                                    Explore
+                                    </Link>
                                 </div>
                             </div>
                         </div>

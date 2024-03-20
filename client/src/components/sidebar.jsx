@@ -3,6 +3,8 @@ import profileLogo from "../assets/profile.svg"
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const navListStyle = "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-green-50 active:bg-opacity-80 text-white hover:text-gray-400 hover:border hover:border-gray-300 focus:text-green-900 active:text-green-900 outline-none"
+
 export default function SideBar() {
 
   const navigate = useNavigate();
@@ -26,7 +28,7 @@ export default function SideBar() {
           setProfile({
               image : response.user.image,
               username : response.user.username,
-              level : response.userStat.stats.exp / 1000,
+              level : Math.floor(response.userStat.stats.exp / 1000),
               coin : response.userStat.stats.coin
           })
       }
@@ -34,31 +36,32 @@ export default function SideBar() {
   }, [])
 
   return (
-      <div className=" relative flex flex-col bg-clip-border text-gray-700 h-min-full w-full max-w-[20rem] p-4 shadow-xl shadow-green-900/5" style={{backgroundColor : "#AAD9BB"}}>
+      <div className=" relative flex flex-col bg-clip-border text-gray-700 h-min-full w-full max-w-[20rem] p-4 shadow-xl shadow-green-900/5" style={{backgroundColor : "#80BCBD"}}>
         <div className="mb-2 p-4">
-          <h5 className="block antialiased tracking-normal font-extrabold text-3xl text-gray-900">
+          <h5 className="block antialiased tracking-normal font-extrabold text-3xl text-white">
             Pintar Lab
           </h5>
         </div>
-        <div>
+        <div className="flex flex-col mr-16 mb-8 mt-4" style={{alignItems : "center", justifyContent : "center"}}>
           <img src={profileLogo} style={{height : 100, width : 100}} />
-          <h1>{profile.username}</h1>
-          <h1>Level : {profile.level}</h1>
-          <h1>Coin : {profile.coin}</h1>
+          <h1 className="text-white text-xl">{profile.username}</h1>
+          <h1 className="text-white">Level {profile.level}</h1>
+          <h1 className="text-white">Coin : {profile.coin} 🪙</h1>
         </div>
         <nav className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
           <div
             role="button"
             tabIndex={0}
-            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-green-50 active:bg-opacity-80 hover:text-green-900 hover:border hover:border-gray-300 focus:text-green-900 active:text-green-900 outline-none"
+            className={navListStyle}
           >
             <div className="grid place-items-center mr-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
-                fill="currentColor"
+                fill="none"
                 aria-hidden="true"
                 className="h-5 w-5"
+                stroke="white"
               >
                 <path
                   fillRule="evenodd"
@@ -67,12 +70,12 @@ export default function SideBar() {
                 />
               </svg>
             </div>
-            <Link to={"/users"}> Profile </Link>
+            <Link to={"/users"} className="" > Profile </Link>
           </div>
           <div
             role="button"
             tabIndex={0}
-            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-green-900 hover:border hover:border-gray-300 focus:text-green-900 active:text-green-900 outline-none"
+            className={navListStyle}
           >
             <div className="grid place-items-center mr-4">
               <svg
@@ -80,7 +83,7 @@ export default function SideBar() {
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
-                stroke="currentColor"
+                stroke="white"
                 className="w-6 h-6"
               >
                 <path
@@ -90,12 +93,35 @@ export default function SideBar() {
                 />
               </svg>
             </div>
-            <Link to={"/courses"}> Courses </Link>
+            <Link to={"/my-courses"} className=""> My Courses </Link>
           </div>
           <div
             role="button"
             tabIndex={0}
-            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-green-50 active:bg-opacity-80 hover:text-green-900 hover:border hover:border-gray-300 focus:text-green-900 active:text-green-900 outline-none"
+            className={navListStyle}
+          >
+            <div className="grid place-items-center mr-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="white"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
+                />
+              </svg>
+            </div>
+            <Link to={"/courses"} className=""> Courses </Link>
+          </div>
+          <div
+            role="button"
+            tabIndex={0}
+            className={navListStyle}
           >
             <div className="grid place-items-center mr-4">
               <svg
@@ -103,7 +129,7 @@ export default function SideBar() {
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
-                stroke="currentColor"
+                stroke="white"
                 className="w-6 h-6"
               >
                 <path
@@ -113,13 +139,13 @@ export default function SideBar() {
                 />
               </svg>
             </div>
-            <Link to={"/achievements"}> Achievement </Link>
+            <Link to={"/achievements"} className=""> Achievement </Link>
           </div>
 
           <div
             role="button"
             tabIndex={0}
-            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-green-50 active:bg-opacity-80 hover:text-green-900 hover:border hover:border-gray-300 focus:text-green-900 active:text-green-900 outline-none"
+            className={navListStyle}
           >
             <div className="grid place-items-center mr-4">
               <svg
@@ -127,7 +153,7 @@ export default function SideBar() {
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
-                stroke="currentColor"
+                stroke="white"
                 className="w-6 h-6"
               >
                 <path
@@ -137,12 +163,12 @@ export default function SideBar() {
                 />
               </svg>
             </div>
-            <Link to={"/leaderboard"}> Leaderboard </Link>
+            <Link to={"/leaderboard"} className=""> Leaderboard </Link>
           </div>
           <div
             role="button"
             tabIndex={0}
-            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-green-50 active:bg-opacity-80 hover:text-green-900 hover:border hover:border-gray-300 focus:text-green-900 active:text-green-900 outline-none"
+            className={navListStyle}
           >
             <div className="grid place-items-center mr-4">
               <svg
@@ -150,7 +176,7 @@ export default function SideBar() {
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
-                stroke="currentColor"
+                stroke="white"
                 className="w-6 h-6"
               >
                 <path
@@ -160,20 +186,21 @@ export default function SideBar() {
                 />
               </svg>
             </div>
-            <Link to={"/shop"}> Shop </Link>
+            <Link to={"/shop"} className=""> Shop </Link>
           </div>
           <div
             role="button"
             tabIndex={0}
-            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-green-50 active:bg-opacity-80 hover:text-green-900 hover:border hover:border-gray-300 focus:text-green-900 active:text-green-900 outline-none"
+            className={navListStyle}
           >
             <div className="grid place-items-center mr-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
-                fill="currentColor"
+                fill="white"
                 aria-hidden="true"
                 className="h-5 w-5"
+                stroke="white"
               >
                 <path
                   fillRule="evenodd"
@@ -185,10 +212,10 @@ export default function SideBar() {
             <button
               className=""
               onClick={() => {
-                localStorage.removeItem("access_token");
+                localStorage.removeItem("accessToken");
                 localStorage.removeItem("id");
                 localStorage.removeItem("status");
-                navigate("/login");
+                navigate("/");
               }}
             >
               Log Out

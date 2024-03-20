@@ -3,7 +3,7 @@ import SideBar from "../components/sidebar";
 
 function Layout() {
   return (
-    <div className="h-full flex flex-grow">
+    <div className="h-screen max-h-screen flex flex-grow">
       <SideBar />
       <Outlet />
     </div>

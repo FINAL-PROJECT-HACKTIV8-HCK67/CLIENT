@@ -4,7 +4,7 @@ export default function Card() {
   const navigate = useNavigate();
   return (
     <>
-      <div className="flex flex-wrap justify-center">
+      <div className=" justify-center">
         <div className=" bg-transparent flex-auto justify-center items-center h-full ml-10 mt-4 ">
           <div className="w- p-6 bg-green-100 rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all transform duration-500">
             <img
