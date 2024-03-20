@@ -14,42 +14,40 @@ const user = {
 
 export default function Profile() {
     return (
-        <div className="max-w-md mx-auto bg-white shadow-md rounded-lg overflow-hidden">
-            <div className="px-6 py-4">
-                <div className="flex justify-center">
-                    <img
-                        className="h-24 w-24 rounded-full"
-                        src={user.avatar}
-                        alt={user.name}
-                    />
-                </div>
-                <div className="text-center mt-4">
-                    <h2 className="text-xl font-semibold">{user.name}</h2>
-                    <p className="text-gray-600 text-sm">{user.email}</p>
-                    <p className="text-gray-600 text-sm">{user.location}</p>
-                    <div className="text-center mt-4">
-                        <p className="text-gray-600 text-sm font-semibold">CREDITS</p>
-                        <p className="text-gray-600 text-sm">$ {user.credit}</p>
+        <div className="container mx-auto px-4" style={{backgroundColor : "#D5F0C1"}}>
+            <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-4 " >
+                <div className="bg-white overflow-hidden shadow-xl sm:rounded-lg " style={{backgroundColor : "#F9F7C9"}}>
+                    <div className="p-6 sm:px-10">
+                        <div className="flex flex-col sm:flex-row items-center">
+                            <div className="sm:mr-10 mb-6 sm:mb-0">
+                                <img
+                                    className="h-32 w-32 rounded-full object-cover"
+                                    src={user.avatar}
+                                    alt={user.name}
+                                />
+                            </div>
+                            <div>
+                                <h1 className="text-3xl font-bold text-gray-800">{user.name}</h1>
+                                <p className="text-gray-600 mt-2">{user.email}</p>
+                                <p className="text-gray-600 mt-2">{user.location}</p>
+                            </div>
+                        </div>
+                            <div className="mt-8">
+                                <h2 className="text-xl font-bold text-gray-800">Credit</h2>
+                                <p className="text-gray-600 mt-2">${user.credit}</p>
+                            </div>
+                        <div className="mt-8">
+                            <h2 className="text-xl font-bold text-gray-800">Achievements</h2>
+                            <ul className="list-disc list-inside mt-2">
+                                {user.achievements.map((achievement, index) => (
+                                    <li key={index} className="text-gray-600">
+                                        {achievement}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="px-6 py-4 flex justify-center">
-                <a
-                    href='#'
-                    className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                >
-                    EDIT
-                </a>
-            </div>
-            <div className="mt-4 ">
-                <h3 className="text-lg font-semibold text-center flex justify-center">Achievements</h3>
-                <ul className="mt-2">
-                    {user.achievements.map((achievement, index) => (
-                        <li key={index} className="text-gray-600 text-sm">
-                            {achievement}
-                        </li>
-                    ))}
-                </ul>
             </div>
         </div>
     )

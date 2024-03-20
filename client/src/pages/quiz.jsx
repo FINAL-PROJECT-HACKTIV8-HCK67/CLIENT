@@ -11,7 +11,7 @@ export default function Quiz() {
         setCheckedItems({ ...checkedItems, [name]: checked });
     };
     return (
-        <div className="bg-yellow-50 flex justify-center items-center min-h-screen">
+        <div className="flex justify-center items-center min-h-screen container mx-auto px-4" style={{backgroundColor : "#D5F0C1"}}>
             <div className="bg-white p-6 rounded-lg shadow-lg w-full sm:w-96">
                 <h1 className="text-xl font-bold mb-4">"Lorem ipsum dolor sit amet, consectetur adipiscing elit"</h1>
                 <form>
