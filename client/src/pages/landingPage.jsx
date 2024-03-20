@@ -4,6 +4,8 @@ import image1 from "../assets/1.jpg";
 import image2 from "../assets/3.jpg";
 import image3 from "../assets/training.jpg";
 import Info from "../components/footer";
+import study from '../assets/study.json'
+import Lottie from 'lottie-react'
 export default function LandingPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = [image1, image2, image3];
@@ -22,6 +24,9 @@ export default function LandingPage() {
     <div className="flex flex-col h-full">
       <section className="bg-gray-50">
         <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
+          <div className="flex justify-center">
+            <Lottie animationData={study} />
+          </div>
           <div className="mx-auto max-w-xl text-center">
             <h1 className="text-3xl font-extrabold sm:text-5xl">
               PintarLabs
@@ -37,7 +42,7 @@ export default function LandingPage() {
               <Link
                 className="block w-full rounded bg-red-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
                 to="/login"
-                style={{backgroundColor : "#80BCBD"}}
+                style={{ backgroundColor: "#80BCBD" }}
               >
                 Login
               </Link>
@@ -45,7 +50,7 @@ export default function LandingPage() {
               <Link
                 className="block w-full rounded px-12 py-3 text-sm font-medium text-red-600 shadow hover:text-red-700 focus:outline-none focus:ring active:text-red-500 sm:w-auto"
                 to="/register"
-                style={{color : "#80BCBD"}}
+                style={{ color: "#80BCBD" }}
               >
                 Register
               </Link>
@@ -111,7 +116,7 @@ export default function LandingPage() {
         </button>
       </div> */}
 
-      <hr className="h-px mt-32 mx-16 bg-gray-300 border-0"/>
+      <hr className="h-px mt-32 mx-16 bg-gray-300 border-0" />
       <h2 className="text-3xl font-bold text-center mt-16 font-extrabold">Our Courses</h2>
       <section className="text-gray-600 body-font ">
         <div className="container px-5 py-24 mx-auto">

@@ -4,8 +4,15 @@ import { useEffect, useState } from "react";
 const user = {
     name: 'Tony Simatupang',
     email: 'tompang@example.com',
+    location: "Cirebon",
     username: 'sitoni',
     avatar: 'https://png.pngtree.com/png-clipart/20230308/ourmid/pngtree-cool-logo-with-retro-character-png-image_6639995.png',
+    achievements: [
+        "Completed Level 1",
+        "Reached 100 Points",
+        "Featured in Top 10",
+        "Earned Gold Badge",
+    ]
 };
 
 export default function Profile() {

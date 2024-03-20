@@ -10,10 +10,10 @@ export default function SideBar() {
   const navigate = useNavigate();
 
   const [profile, setProfile] = useState({
-    image : "",
-    username : "",
-    level : 0,
-    coin : 0
+    image: "",
+    username: "",
+    level: 0,
+    coin: 0
   })
   const [loading, setLoading] = useState(false)
 
@@ -45,7 +45,7 @@ export default function SideBar() {
         <div className="flex flex-col mr-16 mb-8 mt-4" style={{alignItems : "center", justifyContent : "center"}}>
           <img src={profileLogo} style={{height : 100, width : 100}} />
           <h1 className="text-white text-xl">{profile.username}</h1>
-          <h1 className="text-white">Level {profile.level}</h1>
+          <h1 className="text-white">Level : {profile.level}</h1>
           <h1 className="text-white">Coin : {profile.coin} 🪙</h1>
         </div>
         <nav className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
@@ -70,7 +70,7 @@ export default function SideBar() {
                 />
               </svg>
             </div>
-            <Link to={"/users"} className="" > Profile </Link>
+            <Link to={"/users"}> Profile </Link>
           </div>
           <div
             role="button"
@@ -116,7 +116,7 @@ export default function SideBar() {
                 />
               </svg>
             </div>
-            <Link to={"/courses"} className=""> Courses </Link>
+            <Link to={"/courses"}> Courses </Link>
           </div>
           <div
             role="button"
@@ -139,7 +139,7 @@ export default function SideBar() {
                 />
               </svg>
             </div>
-            <Link to={"/achievements"} className=""> Achievement </Link>
+            <Link to={"/achievements"}> Achievement </Link>
           </div>
 
           <div
@@ -163,7 +163,7 @@ export default function SideBar() {
                 />
               </svg>
             </div>
-            <Link to={"/leaderboard"} className=""> Leaderboard </Link>
+            <Link to={"/leaderboard"}> Leaderboard </Link>
           </div>
           <div
             role="button"
@@ -186,7 +186,7 @@ export default function SideBar() {
                 />
               </svg>
             </div>
-            <Link to={"/shop"} className=""> Shop </Link>
+            <Link to={"/shop"}> Shop </Link>
           </div>
           <div
             role="button"
