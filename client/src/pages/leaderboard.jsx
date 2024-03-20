@@ -9,7 +9,7 @@ export default function LeaderBoard() {
     return (
         <div className="w-full max-w-md mx-auto">
             <div className="bg-white shadow-md rounded-lg overflow-hidden ">
-                <div className="bg-emerald-300 px-4 py-2 font-bold">Leaderboard</div>
+                <div className="bg-green-100  px-4 py-2 font-bold">Leaderboard</div>
                 <ul>
                     {leaderboardData.map((player) => (
                         <li key={player.rank} className="border-b border-gray-200">

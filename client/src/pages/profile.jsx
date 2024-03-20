@@ -2,7 +2,14 @@ const user = {
     name: 'Tony Simatupang',
     email: 'tompang@example.com',
     location: 'Cirebon',
+    credit: 50000,
     avatar: 'https://png.pngtree.com/png-clipart/20230308/ourmid/pngtree-cool-logo-with-retro-character-png-image_6639995.png',
+    achievements: [
+        "Completed Level 1",
+        "Reached 100 Points",
+        "Featured in Top 10",
+        "Earned Gold Badge",
+    ]
 };
 
 export default function Profile() {
@@ -20,15 +27,29 @@ export default function Profile() {
                     <h2 className="text-xl font-semibold">{user.name}</h2>
                     <p className="text-gray-600 text-sm">{user.email}</p>
                     <p className="text-gray-600 text-sm">{user.location}</p>
+                    <div className="text-center mt-4">
+                        <p className="text-gray-600 text-sm font-semibold">CREDITS</p>
+                        <p className="text-gray-600 text-sm">$ {user.credit}</p>
+                    </div>
                 </div>
             </div>
             <div className="px-6 py-4 flex justify-center">
                 <a
-                    href={`mailto:${user.email}`}
+                    href='#'
                     className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                 >
-                    Send Email
+                    EDIT
                 </a>
+            </div>
+            <div className="mt-4 ">
+                <h3 className="text-lg font-semibold text-center flex justify-center">Achievements</h3>
+                <ul className="mt-2">
+                    {user.achievements.map((achievement, index) => (
+                        <li key={index} className="text-gray-600 text-sm">
+                            {achievement}
+                        </li>
+                    ))}
+                </ul>
             </div>
         </div>
     )

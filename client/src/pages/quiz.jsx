@@ -6,7 +6,6 @@ export default function Quiz() {
         option3: false,
         option4: false,
     });
-
     const handleCheckboxChange = (event) => {
         const { name, checked } = event.target;
         setCheckedItems({ ...checkedItems, [name]: checked });
@@ -63,6 +62,11 @@ export default function Quiz() {
                             />
                             <span className="ml-2">Pilihan ganda 4</span>
                         </label>
+                    </div>
+                    <div className="mt-6">
+                        <button className="w-full inline-flex items-center justify-center px-4 py-2 bg-teal-300 border border-transparent rounded-md font-semibold capitalize text-white hover:bg-teal-400 active:bg-teal-700 focus:outline-none focus:border-teal-700 focus:ring focus:ring-teal-200 disabled:opacity-25 transition">
+                            Next
+                        </button>
                     </div>
                 </form>
             </div>

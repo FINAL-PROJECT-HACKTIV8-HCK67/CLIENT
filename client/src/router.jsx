@@ -7,6 +7,8 @@ import Layout from "./pages/layout";
 import CourseId from "./pages/courseId";
 import Quiz from "./pages/quiz";
 import Achievement from "./pages/achievement";
+import Profile from "./pages/profile";
+import LeaderBoard from "./pages/leaderboard";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -38,11 +40,19 @@ export const router = createBrowserRouter([
       {
         path: "/achievements",
         element: <Achievement />,
-      }
+      },
+      {
+        path: "/profile",
+        element: <Profile/>,
+      },
+      {
+        path: "/leaderboard",
+        element: <LeaderBoard/>,
+      },
+      {
+        path: "/quiz",
+        element: <Quiz/>,
+      },
     ],
-  },
-  {
-    path: "/profile",
-    element: <Profile/>,
   },
 ]);

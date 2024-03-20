@@ -31,7 +31,7 @@ export default function SideBar() {
                 />
               </svg>
             </div>
-            <Link to={"/users"}> Profile </Link>
+            <Link to={"/profile"}> Profile </Link>
           </div>
           <div
             role="button"
