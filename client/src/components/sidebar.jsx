@@ -1,20 +1,56 @@
 import { Link, useNavigate } from "react-router-dom";
+import profileLogo from "../assets/profile.svg"
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function SideBar() {
+
   const navigate = useNavigate();
+
+  const [profile, setProfile] = useState({
+    image : "",
+    username : "",
+    level : 0,
+    coin : 0
+  })
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+      async function fetchData(){
+          const {data : response} = await axios("http://localhost:3000/profile", {
+              method : "GET",
+              headers : {
+                  "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`
+              }
+          })
+          setProfile({
+              image : response.user.image,
+              username : response.user.username,
+              level : response.userStat.stats.exp / 1000,
+              coin : response.userStat.stats.coin
+          })
+      }
+      fetchData()
+  }, [])
+
   return (
-    <>
-      <div className="relative flex flex-col bg-clip-border rounded-xl bg-green-100 text-gray-700 h-[calc(100vh - 2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-green-900/5">
+      <div className=" relative flex flex-col bg-clip-border text-gray-700 h-min-full w-full max-w-[20rem] p-4 shadow-xl shadow-green-900/5" style={{backgroundColor : "#AAD9BB"}}>
         <div className="mb-2 p-4">
-          <h5 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-gray-900">
+          <h5 className="block antialiased tracking-normal font-extrabold text-3xl text-gray-900">
             Pintar Lab
           </h5>
+        </div>
+        <div>
+          <img src={profileLogo} style={{height : 100, width : 100}} />
+          <h1>{profile.username}</h1>
+          <h1>Level : {profile.level}</h1>
+          <h1>Coin : {profile.coin}</h1>
         </div>
         <nav className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
           <div
             role="button"
             tabIndex={0}
-            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-green-50 active:bg-opacity-80 hover:text-green-900 focus:text-green-900 active:text-green-900 outline-none"
+            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-green-50 active:bg-opacity-80 hover:text-green-900 hover:border hover:border-gray-300 focus:text-green-900 active:text-green-900 outline-none"
           >
             <div className="grid place-items-center mr-4">
               <svg
@@ -36,7 +72,7 @@ export default function SideBar() {
           <div
             role="button"
             tabIndex={0}
-            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-green-900 focus:text-green-900 active:text-green-900 outline-none"
+            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-green-900 hover:border hover:border-gray-300 focus:text-green-900 active:text-green-900 outline-none"
           >
             <div className="grid place-items-center mr-4">
               <svg
@@ -59,7 +95,7 @@ export default function SideBar() {
           <div
             role="button"
             tabIndex={0}
-            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-green-50 active:bg-opacity-80 hover:text-green-900 focus:text-green-900 active:text-green-900 outline-none"
+            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-green-50 active:bg-opacity-80 hover:text-green-900 hover:border hover:border-gray-300 focus:text-green-900 active:text-green-900 outline-none"
           >
             <div className="grid place-items-center mr-4">
               <svg
@@ -83,7 +119,7 @@ export default function SideBar() {
           <div
             role="button"
             tabIndex={0}
-            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-green-50 active:bg-opacity-80 hover:text-green-900 focus:text-green-900 active:text-green-900 outline-none"
+            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-green-50 active:bg-opacity-80 hover:text-green-900 hover:border hover:border-gray-300 focus:text-green-900 active:text-green-900 outline-none"
           >
             <div className="grid place-items-center mr-4">
               <svg
@@ -106,7 +142,7 @@ export default function SideBar() {
           <div
             role="button"
             tabIndex={0}
-            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-green-50 active:bg-opacity-80 hover:text-green-900 focus:text-green-900 active:text-green-900 outline-none"
+            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-green-50 active:bg-opacity-80 hover:text-green-900 hover:border hover:border-gray-300 focus:text-green-900 active:text-green-900 outline-none"
           >
             <div className="grid place-items-center mr-4">
               <svg
@@ -129,7 +165,7 @@ export default function SideBar() {
           <div
             role="button"
             tabIndex={0}
-            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-green-50 active:bg-opacity-80 hover:text-green-900 focus:text-green-900 active:text-green-900 outline-none"
+            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-green-50 active:bg-opacity-80 hover:text-green-900 hover:border hover:border-gray-300 focus:text-green-900 active:text-green-900 outline-none"
           >
             <div className="grid place-items-center mr-4">
               <svg
@@ -147,7 +183,7 @@ export default function SideBar() {
               </svg>
             </div>
             <button
-              className="btn btn-ghost"
+              className=""
               onClick={() => {
                 localStorage.removeItem("access_token");
                 localStorage.removeItem("id");
@@ -160,6 +196,5 @@ export default function SideBar() {
           </div>
         </nav>
       </div>
-    </>
   );
 }

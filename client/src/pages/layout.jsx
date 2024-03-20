@@ -3,12 +3,10 @@ import SideBar from "../components/sidebar";
 
 function Layout() {
   return (
-    <>
-      <div className="h-screen flex flex-grow">
-        <SideBar />
-        <Outlet />
-      </div>
-    </>
+    <div className="h-full flex flex-grow">
+      <SideBar />
+      <Outlet />
+    </div>
   );
 }
 
