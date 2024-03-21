@@ -12,7 +12,7 @@ export default function Achievement() {
         async function fetchData(){
             try {
                 setLoading(true)
-                const {data : response} = await axios("http://localhost:3000/profile", {
+                const {data : response} = await axios("https://server.zoombooz.online/profile", {
                     method : "GET",
                     headers : {
                         "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`

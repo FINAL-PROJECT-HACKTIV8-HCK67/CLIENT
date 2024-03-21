@@ -11,7 +11,7 @@ export default function LeaderBoard() {
         async function fetchData(){
             try {
                 setLoading(true)
-                const {data} = await axios("http://localhost:3000/leaderboard", {
+                const {data} = await axios("https://server.zoombooz.online/leaderboard", {
                     method : "GET", 
                     headers : {
                         "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`

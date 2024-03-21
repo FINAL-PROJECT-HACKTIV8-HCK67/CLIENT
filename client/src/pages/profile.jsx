@@ -1,19 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const user = {
-    name: 'Tony Simatupang',
-    email: 'tompang@example.com',
-    location: "Cirebon",
-    username: 'sitoni',
-    avatar: 'https://png.pngtree.com/png-clipart/20230308/ourmid/pngtree-cool-logo-with-retro-character-png-image_6639995.png',
-    achievements: [
-        "Completed Level 1",
-        "Reached 100 Points",
-        "Featured in Top 10",
-        "Earned Gold Badge",
-    ]
-};
+// const user = {
+//     name: 'Tony Simatupang',
+//     email: 'tompang@example.com',
+//     location: "Cirebon",
+//     username: 'sitoni',
+//     avatar: 'https://png.pngtree.com/png-clipart/20230308/ourmid/pngtree-cool-logo-with-retro-character-png-image_6639995.png',
+//     achievements: [
+//         "Completed Level 1",
+//         "Reached 100 Points",
+//         "Featured in Top 10",
+//         "Earned Gold Badge",
+//     ]
+// };
 
 export default function Profile() {
 
@@ -25,7 +25,7 @@ export default function Profile() {
         async function fetchData(){
             try {
                 setLoading(true)
-                const {data : response} = await axios("http://localhost:3000/profile", {
+                const {data : response} = await axios("https://server.zoombooz.online/profile", {
                     method : "GET",
                     headers : {
                         "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`
@@ -59,8 +59,8 @@ export default function Profile() {
                     <div className="flex justify-center">
                         <img
                             className="h-24 w-24 rounded-full"
-                            src={"https://picsum.photos/200"}
-                            alt={user.name}
+                            src={data.user?.image ? data.user.image : "https://picsum.photos/200"}
+                            alt={data.user?.name}
                         />
                     </div>
                     <div className="h-full mt-4" style={{textAlign : "center"}}>
@@ -79,7 +79,7 @@ export default function Profile() {
                 </span>
 
                 <div className="px-6 py-4 flex justify-center">
-                    <div className="flow-root">
+                    <div className="flow-root w-full">
                         <h2 className="text-xl font-semibold text-gray-500 mb-8" style={{textAlign : "center"}}>User Stats</h2>
                         <dl className="-my-3 divide-y divide-gray-100 text-sm">
                             <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
@@ -102,14 +102,14 @@ export default function Profile() {
                                 <dd className="text-gray-700 sm:col-span-2">{data.userStat?.stats.quizAnswered}</dd>
                             </div>
 
-                            <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+                            {/* <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
                                 <dt className="font-medium text-gray-900">Bio</dt>
                                 <dd className="text-gray-700 sm:col-span-2">
                                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facilis debitis explicabo
                                     doloremque impedit nesciunt dolorem facere, dolor quasi veritatis quia fugit aperiam
                                     aspernatur neque molestiae labore aliquam soluta architecto?
                                 </dd>
-                            </div>
+                            </div> */}
                         </dl>
                     </div>
                 </div>

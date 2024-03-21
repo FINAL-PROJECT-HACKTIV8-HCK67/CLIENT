@@ -13,7 +13,7 @@ export default function MyCourses() {
         async function fetchData(){
             try {
                 setLoading(true)
-                const response = await axios("http://localhost:3000/course/my-course", {
+                const response = await axios("https://server.zoombooz.online/course/my-course", {
                     headers : {
                         "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`
                     }

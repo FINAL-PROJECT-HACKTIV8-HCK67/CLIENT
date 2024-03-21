@@ -19,7 +19,7 @@ export default function Register() {
     try {
         const requestBody = {name, username, email, password}
         console.log(name, username, email, password)
-        const response = await axios.post("http://localhost:3000/register", requestBody)
+        const response = await axios.post("https://server.zoombooz.online/register", requestBody)
         console.log(response)
         Swal.fire({
             title: "Account Created!",
@@ -43,7 +43,7 @@ export default function Register() {
         <Books />
         <div className="w-full sm:max-w-md p-5 mx-auto">
           <h2 className="mb-12 text-center text-5xl font-extrabold text-black" style={{color : "#80BCBD"}}>
-            Pintar Lab
+            PintarLabs
           </h2>
           <form onSubmit={handleRegister}>
             <div className="mb-4">

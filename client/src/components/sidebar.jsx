@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import profileLogo from "../assets/profile.svg"
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import UserContext from "../../context/user";
 
 const navListStyle = "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-green-50 hover:bg-opacity-80 focus:bg-green-50 focus:bg-opacity-80 active:bg-green-50 active:bg-opacity-80 text-white hover:text-gray-400 hover:border hover:border-gray-300 focus:text-green-900 active:text-green-900 outline-none"
 
@@ -9,23 +10,26 @@ export default function SideBar() {
 
   const navigate = useNavigate();
 
-  const [profile, setProfile] = useState({
-    image: "",
-    username: "",
-    level: 0,
-    coin: 0
-  })
+  // const [profile, setProfile] = useState({
+  //   image: "",
+  //   username: "",
+  //   level: 0,
+  //   coin: 0
+  // })
+  
+  const user = useContext(UserContext)
+
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
       async function fetchData(){
-          const {data : response} = await axios("http://localhost:3000/profile", {
+          const {data : response} = await axios("https://server.zoombooz.online/profile", {
               method : "GET",
               headers : {
                   "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`
               }
           })
-          setProfile({
+          user.setProfile({
               image : response.user.image,
               username : response.user.username,
               level : Math.floor(response.userStat.stats.exp / 1000),
@@ -44,9 +48,9 @@ export default function SideBar() {
         </div>
         <div className="flex flex-col mr-16 mb-8 mt-4" style={{alignItems : "center", justifyContent : "center"}}>
           <img src={profileLogo} style={{height : 100, width : 100}} />
-          <h1 className="text-white text-xl">{profile.username}</h1>
-          <h1 className="text-white">Level : {profile.level}</h1>
-          <h1 className="text-white">Coin : {profile.coin} 🪙</h1>
+          <h1 className="text-white text-xl">{user.profile.username}</h1>
+          <h1 className="text-white">Level : {user.profile.level}</h1>
+          <h1 className="text-white">Coin : {user.profile.coin} 🪙</h1>
         </div>
         <nav className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
           <div
@@ -165,7 +169,7 @@ export default function SideBar() {
             </div>
             <Link to={"/leaderboard"}> Leaderboard </Link>
           </div>
-          <div
+          {/* <div
             role="button"
             tabIndex={0}
             className={navListStyle}
@@ -187,7 +191,7 @@ export default function SideBar() {
               </svg>
             </div>
             <Link to={"/shop"}> Shop </Link>
-          </div>
+          </div> */}
           <div
             role="button"
             tabIndex={0}

@@ -34,8 +34,7 @@ export default function LandingPage() {
             </h1>
 
             <p className="mt-4 sm:text-xl/relaxed">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo tenetur fuga ducimus
-              numquam ea!
+            Welcome to our LMS website where learning becomes an adventure! Level up your knowledge, earn coins, and unlock achievements as you progress.
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">

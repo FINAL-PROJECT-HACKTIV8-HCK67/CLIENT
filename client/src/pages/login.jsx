@@ -16,10 +16,10 @@ export default function Login() {
         try {
             const requestBody = {email, password}
             console.log(email, password)
-            const response = await axios.post("http://localhost:3000/login", requestBody)
+            const response = await axios.post("https://server.zoombooz.online/login", requestBody)
             console.log(response.data.accessToken)
             localStorage.setItem("accessToken", response.data.accessToken)
-            navigate("/courses")
+            navigate("/my-courses")
         } catch (error) {
             console.log(error);
             Swal.fire({
@@ -35,7 +35,7 @@ export default function Login() {
       <div className="w-full min-h-screen bg-yellow-50 flex sm:flex-row sm:justify-center items-center pt-6 sm:pt-0">
         <Books />
         <div className="w-full sm:max-w-md p-5 mx-auto">
-          <h2 className="mb-12 text-center text-5xl font-extrabold" style={{color : "#80BCBD"}}>Pintar Lab</h2>
+          <h2 className="mb-12 text-center text-5xl font-extrabold" style={{color : "#80BCBD"}}>PintarLabs</h2>
           <form onSubmit={handleLogin}>
             <div className="mb-4">
               <label className="block mb-1 text-gray-500" htmlFor="email">

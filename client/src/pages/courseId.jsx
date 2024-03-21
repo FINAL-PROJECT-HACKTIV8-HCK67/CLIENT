@@ -16,7 +16,7 @@ export default function CourseId() {
         async function fetchData(){
             try {
                 setLoading(true)
-                const {data : response} = await axios(`http://localhost:3000/course/my-course/${id}`, {
+                const {data : response} = await axios(`https://server.zoombooz.online/course/my-course/${id}`, {
                     method : "GET",
                     headers : {
                         "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`
@@ -38,13 +38,13 @@ export default function CourseId() {
         try {
             const requestBody = {courseTitle : id, index, section : page}
             console.log();
-            const response = await axios.post("http://localhost:3000/course/complete-course", requestBody, {
+            const response = await axios.post("https://server.zoombooz.online/course/complete-course", requestBody, {
                 headers : {
                     "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`
                 }
             })
             console.log(response);
-            const {data : response2} = await axios(`http://localhost:3000/course/my-course/${id}`, {
+            const {data : response2} = await axios(`https://server.zoombooz.online/course/my-course/${id}`, {
                     method : "GET",
                     headers : {
                         "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`

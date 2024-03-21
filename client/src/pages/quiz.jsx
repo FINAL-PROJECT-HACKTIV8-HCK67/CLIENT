@@ -1,13 +1,15 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import UserContext from "../../context/user";
 
 export default function Quiz() {
     const navigate = useNavigate()
     const params = useParams()
     const charIndex = ["A", "B", "C", "D"]
 
+    const user = useContext(UserContext)
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -30,7 +32,7 @@ export default function Quiz() {
                 setLoading(true)
                 const [courseTitle, sectionTitle] = params.id.split("&&")
                 const requestBody = {courseTitle, title : sectionTitle}
-                const {data : response} = await axios.post("http://localhost:3000/course/get-quiz", requestBody, {
+                const {data : response} = await axios.post("https://server.zoombooz.online/course/get-quiz", requestBody, {
                     headers : {
                         "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`
                     }
@@ -57,12 +59,24 @@ export default function Quiz() {
                 courseTitle,
                 title : sectionTitle
             }
-            const response = await axios.post('http://localhost:3000/course/submit-quiz', requestBody, {
+            const response = await axios.post('https://server.zoombooz.online/course/submit-quiz', requestBody, {
                 headers : {
                     "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`
                 }
             })
-            console.log(response, "SUBMIT QUIZ <<<<<<>>>>>>");
+            // console.log(response, "SUBMIT QUIZ <<<<<<>>>>>>");
+            const {data : response2} = await axios("https://server.zoombooz.online/profile", {
+              method : "GET",
+              headers : {
+                  "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`
+              }
+            })
+            user.setProfile({
+                image : response2.user.image,
+                username : response2.user.username,
+                level : Math.floor(response2.userStat.stats.exp / 1000),
+                coin : response2.userStat.stats.coin
+            })
             Swal.fire({
                 title: "Good job!",
                 text: response.data.message,

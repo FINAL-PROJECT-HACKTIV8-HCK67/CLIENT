@@ -1,13 +1,15 @@
 import axios from "axios";
 import Card from "../components/card";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../../context/user";
 
 export default function Courses() {
 
     const navigate = useNavigate()
 
+    const user = useContext(UserContext)
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -16,7 +18,7 @@ export default function Courses() {
         async function fetchData(){
             try {
                 setLoading(true)
-                const response = await axios("http://localhost:3000/course", {
+                const response = await axios("https://server.zoombooz.online/course", {
                     headers : {
                         "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`
                     }
@@ -34,12 +36,24 @@ export default function Courses() {
 
     async function handleUnlockCourse(id){
         try {
-            const response = await axios.post("http://localhost:3000/course/unlock-course", 
+            const response = await axios.post("https://server.zoombooz.online/course/unlock-course", 
                 {courseId : id},
                 {headers : {
                     "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`
                 }}
             )
+            const {data : response2} = await axios("https://server.zoombooz.online/profile", {
+              method : "GET",
+              headers : {
+                  "Authorization" : `Bearer ${localStorage.getItem("accessToken")}`
+              }
+            })
+            user.setProfile({
+                image : response2.user.image,
+                username : response2.user.username,
+                level : Math.floor(response2.userStat.stats.exp / 1000),
+                coin : response2.userStat.stats.coin
+            })
             Swal.fire({
                 title: "Good Job!",
                 text: "Course Unlocked!",
